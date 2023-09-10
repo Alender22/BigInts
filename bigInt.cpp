@@ -116,6 +116,12 @@ Int Int::addNumbers(Int a)
     return result;
 }
 
+
+/*
+    Purpose: subtract two Int numbers. Only works when subtractin smaller equal numbers.
+    Parameters: The Int to subtract from the object
+    Return: Differnce Int
+*/
 Int Int::subNumbers(Int a)
 {
     const int * ap = a.getNumPointer();
