@@ -68,5 +68,53 @@ string Int::readNumberToString()
     for(int i = 1; i < number[0]; i++)
         numberString = to_string(number[i]) + numberString;
 
+    while(numberString[0] == '0' && numberString != "0")
+        numberString = numberString.substr(1, numberString.length() - 1);
+
     return numberString;
+}
+
+Int Int::addNumbers(Int a)
+{
+    const int * ap = a.getNumPointer();
+    int bigLen = (ap[0] > number[0]) ? ap[0] : number[0], shortLen = (ap[0] > number[0]) ? ap[0] : number[0];
+    const int * bigNum = (ap[0] > number[0]) ? ap : number;
+    const int * smallNum = (ap[0] <= number[0]) ? ap : number;
+
+    int * answer = new int[bigLen + 1];
+    answer[0] = bigLen + 1;
+
+    for(int i = 1; i < bigLen; i++)
+    {
+        answer[i] = bigNum[i];
+    }
+
+    int carryInt = 0;
+
+    for(int i = 1; i < shortLen; i++)
+    {
+        answer[i] += smallNum[i];
+        carryInt = answer[i] / BASE;
+        answer[i] -= carryInt * BASE;
+        answer[i + 1] += carryInt;
+    }
+
+    //TODO: free the last, unused integer.
+    /*if(answer[answer[0] - 1] == 0)
+    {
+        delete (answer + answer[0] - 1);
+        answer[0]--;
+    }*/
+
+    Int result;
+    result.setNumber(answer);
+    return result;
+}
+
+void Int::setNumber(int * toSet)
+{
+    if(number != nullptr)
+        delete [] number;
+
+    number = toSet;
 }
