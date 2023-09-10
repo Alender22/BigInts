@@ -74,6 +74,11 @@ string Int::readNumberToString()
     return numberString;
 }
 
+/*
+    Purpose: Add two Int numbers together
+    Parameters: an int number. Will add that value to its own
+    Return: Does not change the value of the object itself, returns a new object with the specified value
+*/
 Int Int::addNumbers(Int a)
 {
     const int * ap = a.getNumPointer();
@@ -105,6 +110,36 @@ Int Int::addNumbers(Int a)
         delete (answer + answer[0] - 1);
         answer[0]--;
     }*/
+
+    Int result;
+    result.setNumber(answer);
+    return result;
+}
+
+Int Int::subNumbers(Int a)
+{
+    const int * ap = a.getNumPointer();
+    int bigLen = (ap[0] > number[0]) ? ap[0] : number[0], shortLen = (ap[0] > number[0]) ? ap[0] : number[0];
+    const int * bigNum = (ap[0] > number[0]) ? ap : number;
+    const int * smallNum = (ap[0] <= number[0]) ? ap : number;
+
+    int * answer = new int[bigLen];
+    answer[0] = bigLen;
+
+    for(int i = 1; i < bigLen; i++)
+    {
+        answer[i] = bigNum[i];
+    }
+
+    int carryInt = 0;
+
+    for(int i = 1; i < shortLen; i++)
+    {
+        answer[i] -= smallNum[i];
+        carryInt = 1 - ((answer[i] + BASE) / BASE);
+        answer[i] += carryInt * BASE;
+        answer[i + 1] -= carryInt;
+    }
 
     Int result;
     result.setNumber(answer);
