@@ -152,6 +152,11 @@ Int Int::subNumbers(Int a)
     return result;
 }
 
+/*
+    Purpose: set the number pointer in an Int object to a given int *
+    Parameters: the int * to set number to
+    Return: none
+*/
 void Int::setNumber(int * toSet)
 {
     if(number != nullptr)

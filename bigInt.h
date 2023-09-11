@@ -26,6 +26,7 @@ class Int
 
         Int addNumbers(Int a);
         Int subNumbers(Int a);
+        Int mulNumbers(Int a);
 };
 
 #endif
