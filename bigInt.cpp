@@ -116,7 +116,6 @@ Int Int::addNumbers(Int a)
     return result;
 }
 
-
 /*
     Purpose: subtract two Int numbers. Only works when subtractin smaller equal numbers.
     Parameters: The Int to subtract from the object
@@ -154,11 +153,13 @@ Int Int::subNumbers(Int a)
 
 /*
     Purpose: multiply two Int numbers
+    Parameters: Number to multiply by
+    Return: the product of the two numbers
 */
 Int Int::mulNumbers(Int a)
 {
     int * numA = a.getNumPointer(); int * numB = number;
-    int * answer = new int[numA[0] + numB[0]];
+    int * answer     = new int[numA[0] + numB[0]];
     answer[0] = numA[0] + numB[0];
 
     int product, carry;
