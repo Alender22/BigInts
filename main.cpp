@@ -12,7 +12,7 @@ int main()
     cin >> userIterations;
     cout << endl << endl;
 
-    for(int i = 0; i < 1000; i++)
+    for(int i = 0; i < userIterations; i++)
     {
         for(int j = 0; j <= i; j++)
         {
@@ -20,8 +20,8 @@ int main()
             a.readStringToNumber(to_string(i));
             b.readStringToNumber(to_string(j));
 
-            Int result = a.subNumbers(b);
-            if(result.readNumberToString() != to_string(i - j))
+            Int result = a.mulNumbers(b);
+            if(result.readNumberToString() != to_string(i * j))
                 cout << a.readNumberToString() << " - " << b.readNumberToString() << " = " << result.readNumberToString() << "  |  " << i - j << endl;
         }
     }

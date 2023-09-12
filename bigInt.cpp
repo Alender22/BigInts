@@ -153,6 +153,35 @@ Int Int::subNumbers(Int a)
 }
 
 /*
+    Purpose: multiply two Int numbers
+*/
+Int Int::mulNumbers(Int a)
+{
+    int * numA = a.getNumPointer(); int * numB = number;
+    int * answer = new int[numA[0] + numB[0]];
+    answer[0] = numA[0] + numB[0];
+
+    int product, carry;
+
+    for(int i = 1; i < numA[0]; i++)
+    {
+        for(int j = 1; j < numB[0]; j++)
+        {
+            product = numA[i] * numB[j] + answer[i + j - 1];
+            carry = product / BASE;
+            product -= BASE * carry;    
+
+            answer[i + j - 1] = product;
+            answer[i + j] += carry;
+        }
+    }
+
+    Int result;
+    result.setNumber(answer);
+    return result;
+}
+
+/*
     Purpose: set the number pointer in an Int object to a given int *
     Parameters: the int * to set number to
     Return: none
